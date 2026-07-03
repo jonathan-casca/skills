@@ -16,6 +16,16 @@ Copy-paste prompts for Claude, Codex, or other coding agents to turn a vibe-code
 - `frontend-product-quality.md` - UX states, forms, accessibility, and async flows
 - `architecture-maintainability.md` - module boundaries, TypeScript, and refactoring
 - `go-fix-it.md` - prompts that ask the agent to implement fixes directly
+- `launch-readiness.md` - launch gates, go/no-go checks, rollout planning
+- `incident-response.md` - incident drills, runbooks, recovery, and postmortems
+- `billing-monetization.md` - billing correctness, subscriptions, entitlements, and finance ops
+- `privacy-compliance.md` - privacy, data governance, consent, retention, and access controls
+- `ai-agent-readiness.md` - AI feature safety, evals, prompts, guardrails, and cost controls
+- `api-contracts-integrations.md` - public APIs, SDKs, webhooks, integrations, and versioning
+- `performance-scale.md` - profiling, load testing, database scale, caching, and cost
+- `migration-backfill.md` - data migrations, backfills, rollouts, and rollback safety
+- `product-ops.md` - feature flags, analytics, lifecycle emails, and operational workflows
+- `big-sweep-prompts.md` - larger multi-phase prompts for agents to run end-to-end
 
 ## Meta Prompt
 
