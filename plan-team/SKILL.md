@@ -44,7 +44,7 @@ Use the fixed roster unless the user supplies overrides. Validate model slugs ag
 - Give every new agent a self-contained prompt with only the evidence it needs.
 - Run independent role agents and independent candidate teams in parallel.
 - Run debate rounds only after all previous-round positions are available.
-- Run all planning agents locally in Cursor Desktop foreground mode. Do not substitute cloud agents.
+- Prefer Cursor Desktop foreground subagents when the host session is local. When the host is already a Cloud / remote serverless agent, run planning subagents in that same environment — do not nest extra cloud VMs from Desktop, and do not refuse to run solely because the host is serverless.
 
 ## Workflow
 
@@ -56,14 +56,14 @@ Use the fixed roster unless the user supplies overrides. Validate model slugs ag
 6. Spawn a fresh decision owner for each candidate team to write its standalone candidate plan.
 7. In `best` and `lite`, persist all candidate artifacts, then run a fully fresh synthesis team. It first independently reviews the evidence, then critiques the candidate plans. A fresh decision owner writes the single final build plan.
 8. In `single`, skip cross-plan synthesis. Spawn a fresh Opus decision owner after the one team discussion to write the final build plan.
-9. Persist artifacts to both locations, then return links to the final plan and candidate plans:
+9. Persist artifacts, then return links to the final plan and candidate plans:
 
 ```text
-~/.cursor/plan-team-runs/<timestamp>-<task-slug>/
-<workspace>/.cursor/plan-team-runs/<timestamp>-<task-slug>/
+<workspace>/.cursor/plan-team-runs/<timestamp>-<task-slug>/   # always (Cloud + Desktop)
+~/.cursor/plan-team-runs/<timestamp>-<task-slug>/             # also write when home is writable (Desktop)
 ```
 
-Use a slug made only of lowercase letters, numbers, and hyphens. Never put secrets, raw tokens, or unnecessary PII in artifacts.
+On Cloud / remote serverless hosts, home (`~/.cursor`) may be missing or ephemeral — workspace persistence is required; skip the personal mirror if `~/.cursor` is not writable. Use a slug made only of lowercase letters, numbers, and hyphens. Never put secrets, raw tokens, or unnecessary PII in artifacts.
 
 ## Team Size and Debate Defaults
 

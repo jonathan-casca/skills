@@ -102,8 +102,8 @@ Defaults for team size / debate:
 7. **Artifacts** — plans are persisted under:
 
 ```text
-~/.cursor/plan-team-runs/<timestamp>-<task-slug>/
-<workspace>/.cursor/plan-team-runs/<timestamp>-<task-slug>/
+<workspace>/.cursor/plan-team-runs/<timestamp>-<task-slug>/   # always
+~/.cursor/plan-team-runs/<timestamp>-<task-slug>/             # when ~/.cursor is writable
 ```
 
 ### Isolation rules (non-negotiable)
@@ -111,7 +111,7 @@ Defaults for team size / debate:
 - New subagent for every role, debate round, decision owner, and synthesis role
 - Never `resume` or reuse a role agent’s context
 - Self-contained prompts only
-- Local Cursor Desktop foreground agents — not cloud agents
+- Desktop: local foreground subagents. Cloud / remote serverless: run subagents in the host environment (do not nest extra cloud VMs from Desktop)
 
 ### Decision standard
 
@@ -176,7 +176,8 @@ Also mirrored at [`.cursor/skills/plan-team/`](../.cursor/skills/plan-team/) for
 
 ## Requirements
 
-- Cursor Desktop with Agent + local subagents
+- Cursor Agent with subagents (Desktop or Cloud / remote serverless)
+- For Cloud: install via **Customize → Rules → Remote Rule (GitHub)** → `https://github.com/jonathan-casca/skills` (project `.cursor/skills` is often gitignored and unavailable on cloud VMs)
 - Models from the currently available subagent model list (slugs validated at run time)
 - Do not put secrets, tokens, or unnecessary PII into plan artifacts
 

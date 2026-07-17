@@ -174,14 +174,14 @@ Run one Opus team with the selected roles and one adversarial round. Do not crea
 
 ## 7. Artifact Persistence
 
-Use a UTC timestamp and sanitized task slug. Create both run roots:
+Use a UTC timestamp and sanitized task slug. Always create the workspace run root. Also create the personal run root when `~/.cursor` is writable (Desktop). On Cloud / remote serverless, skip the personal mirror if home is missing or not writable.
 
 ```text
-~/.cursor/plan-team-runs/<timestamp>-<task-slug>/
-<workspace>/.cursor/plan-team-runs/<timestamp>-<task-slug>/
+<workspace>/.cursor/plan-team-runs/<timestamp>-<task-slug>/   # required
+~/.cursor/plan-team-runs/<timestamp>-<task-slug>/             # Desktop / when writable
 ```
 
-Write identical Markdown content to both roots:
+Write identical Markdown content to every root you create:
 
 ```text
 run-manifest.md
